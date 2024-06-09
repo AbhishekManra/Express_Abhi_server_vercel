@@ -11,6 +11,16 @@
         "src": "/generate",
         "methods": ["POST", "OPTIONS"],
         "dest": "/index.js"
+      },
+      {
+        "src": "/generatepost",
+        "methods": ["POST", "OPTIONS"],
+        "dest": "/index.js"
+      },
+      {
+        "src": "/generatecomment",
+        "methods": ["POST", "OPTIONS"],
+        "dest": "/index.js"
       }
     ],
     "outputDirectory": "dist"

@@ -35,7 +35,71 @@ app.post('/generate', async (req, res) => {
       console.error('Error:', error);
       res.status(500).json({ error: 'Internal server error.' });
     }
-  });
+});
+
+app.post("/generatepost", async (req, res) => {
+  try {
+    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+    // Get the prompt from the request body
+    const request_data  = req.body.data;
+    console.log(request_data);
+
+    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Persona : " + request_data[2].persona + " Prompt : " + request_data[3].prompt + 
+      `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible \n `;
+      console.log(prompt)
+
+
+    // Check if the prompt is provided
+    if (!prompt) {
+      return res.status(400).json({ error: "Prompt is required" });
+    }
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    console.log(text);
+
+    // Send the response after all the operations have completed
+    res.json({ message: text });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred in gemni code" });
+  }
+});
+
+app.post("/generatecomment", async (req, res) => {
+  try {
+    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+    // Get the prompt from the request body
+    const request_data  = req.body.data;
+    console.log(request_data);
+
+    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Persona : " + request_data[2].persona + " Prompt : " + request_data[3].prompt + " PosterName: " + request_data[4].Admin + " postContent: " + request_data[5].Content + 
+      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra\n `;
+      console.log(prompt)
+
+
+    // Check if the prompt is provided
+    if (!prompt) {
+      return res.status(400).json({ error: "Prompt is required" });
+    }
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    console.log(text);
+
+    // Send the response after all the operations have completed
+    res.json({ message: text });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred in gemni code" });
+  }
+});
 
 app.listen(3000, () => {
     console.log(`Starting Server on Port ${port}`);
