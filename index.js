@@ -46,8 +46,8 @@ app.post("/generatepost", async (req, res) => {
     const request_data  = req.body.data;
     console.log(request_data);
 
-    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Persona : " + request_data[2].persona + " Prompt : " + request_data[3].prompt + 
-      `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible \n `;
+    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Prompt : " + request_data[3].prompt + 
+      `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible ,  i am adding some of my information , ${request_data[2].persona} also give the response in a formatted manner \n `;
       console.log(prompt)
 
 
@@ -78,8 +78,8 @@ app.post("/generatecomment", async (req, res) => {
     const request_data  = req.body.data;
     console.log(request_data);
 
-    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Persona : " + request_data[2].persona + " Prompt : " + request_data[3].prompt + " PosterName: " + request_data[4].Admin + " postContent: " + request_data[5].Content + 
-      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra\n `;
+    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone  + " Prompt : " + request_data[3].prompt + " PosterName: " + request_data[4].Admin + " postContent: " + request_data[5].Content + 
+      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra ,  i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner\n `;
       console.log(prompt)
 
 
