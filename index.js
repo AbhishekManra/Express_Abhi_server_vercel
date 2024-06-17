@@ -109,7 +109,7 @@ app.post("/generatemessage", async (req, res) => {
     const request_data  = req.body.data;
     console.log(request_data);
 
-    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone  + " Prompt : " + request_data[3].prompt + " last message: " + request_data[5].Content + 
+    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone  + " Prompt : " + request_data[3].prompt + " last message: " + request_data[4].Content + 
       `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the user, Now create a linkedIn message from my behalf use my persona to mimic me .keep it short and dont add anything extra , i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner\n `;
       console.log(prompt)
 
