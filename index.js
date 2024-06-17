@@ -106,12 +106,20 @@ app.post("/generatemessage", async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
-    const request_data  = req.body.data;
-    console.log(request_data);
+    const request_data  = req.body;
 
-    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone  + " Prompt : " + request_data[3].prompt + " last message: " + request_data[4].Content + 
-      `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the user, Now create a linkedIn message from my behalf use my persona to mimic me .keep it short and dont add anything extra , i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner\n `;
-      console.log(prompt)
+    const prompt =
+      " Goals : " +
+      request_data[0].goals +
+      " Tone : " +
+      request_data[1].tone +
+      " Prompt : " +
+      request_data[3].prompt +
+      " last message: " +
+      request_data[4].Content +
+      `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the a user on linkedIn, Now create a linkedIn message from my behalf use my persona to mimic me and reply.keep it short and dont add anything extra , i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont include this "[name]"\n `;
+    console.log(prompt);
+
 
 
     // Check if the prompt is provided
