@@ -117,7 +117,7 @@ app.post("/generatemessage", async (req, res) => {
       request_data[3].prompt +
       " last message: " +
       request_data[4].Content +
-      `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the a user on linkedIn, Now create a linkedIn message from my behalf use my persona to mimic me and reply.keep it short and dont add anything extra , i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont include this "[name]"\n `;
+      `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the a user on linkedIn, Now create a linkedIn message from my behalf use my persona to mimic me and reply.keep it short and return only message nothing extra just message, i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont include this "[name]"\n `;
     console.log(prompt);
 
 
