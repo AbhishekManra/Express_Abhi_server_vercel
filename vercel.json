@@ -21,6 +21,11 @@
         "src": "/generatecomment",
         "methods": ["POST", "OPTIONS"],
         "dest": "/index.js"
+      },
+      {
+        "src": "/generatemessage",
+        "methods": ["POST", "OPTIONS"],
+        "dest": "/index.js"
       }
     ],
     "outputDirectory": "dist"
