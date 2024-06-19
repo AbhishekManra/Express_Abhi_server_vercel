@@ -79,7 +79,9 @@ app.post("/generatecomment", async (req, res) => {
     console.log(request_data);
 
     const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone  + " Prompt : " + request_data[3].prompt + " PosterName: " + request_data[4].Admin + " postContent: " + request_data[5].Content + 
-      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra ,  i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont add name in any manner in the post and dont add tags with ** ** just comment reply\n `;
+      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and formatted manner.Dont Return only the comment text without any additional context or instructions. Format:
+      Comment: [Your comment text here]\n `;
+      // `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra ,  i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont add name in any manner in the post and dont add tags with ** ** just comment reply\n `;
       console.log(prompt)
 
 
