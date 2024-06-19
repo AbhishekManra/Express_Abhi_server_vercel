@@ -79,7 +79,7 @@ app.post("/generatecomment", async (req, res) => {
     console.log(request_data);
 
     const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone  + " Prompt : " + request_data[3].prompt + " PosterName: " + request_data[4].Admin + " postContent: " + request_data[5].Content + 
-      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra ,  i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner\n `;
+      `\n\n  Above is given the Goals,tone,persona,prompt,Post creator name and post content, Now create a linkedIn comment for above post ,postContent is linkedin post data .In my behalf reply in comment based on above criterias keep it short and dont add anything extra ,  i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont add name in any manner in the post\n `;
       console.log(prompt)
 
 
@@ -117,7 +117,7 @@ app.post("/generatemessage", async (req, res) => {
       request_data[3].prompt +
       " last message: " +
       request_data[4].Content +
-      `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the a user on linkedIn, Now create a linkedIn message from my behalf use my persona to mimic me and reply.keep it short and return only message nothing extra just message, i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and dont include this "[name]"\n `;
+      `\n\n  Above is given the Goals,tone,persona,prompt, and last message of the a user on linkedIn, Now create a linkedIn message from my behalf use my persona to mimic me and reply.keep it short and return only message nothing extra just message, i am adding some of my information , this is my info ${request_data[2].persona} also give the response in a formatted manner and  dont add name in any manner in the post make it without name\n `;
     console.log(prompt);
 
 
