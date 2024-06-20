@@ -47,7 +47,7 @@ app.post("/generatepost", async (req, res) => {
     console.log(request_data);
 
     const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Prompt : " + request_data[3].prompt + 
-      `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible ,  i am adding some of my information , ${request_data[2].persona} also give the response in a formatted manner \n `;
+      `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible ,  i am adding some of my information , ${request_data[2].persona} also give the response in a formatted manner and dont give headings just give content without headings\n `;
       console.log(prompt)
 
 
