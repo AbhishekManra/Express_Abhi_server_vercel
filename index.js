@@ -1,4 +1,5 @@
 import express from "express";
+require('dotenv').config()
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import * as dotenv from 'dotenv';
 import cors from 'cors'
@@ -15,7 +16,7 @@ dotenv.config();
 
 app.post('/generate', async (req, res) => {
     try {
-        const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+        const genAI = new GoogleGenerativeAI(process.env.genai_key);
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
         // const { messages } = req.body; 
         console.log(req.body.messages)
@@ -39,7 +40,7 @@ app.post('/generate', async (req, res) => {
 
 app.post("/generatepost", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.genai_key);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -71,7 +72,7 @@ app.post("/generatepost", async (req, res) => {
 
 app.post("/generatecomment", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.genai_key);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -103,7 +104,7 @@ app.post("/generatecomment", async (req, res) => {
 });
 app.post("/generatemessage", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.genai_key);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
