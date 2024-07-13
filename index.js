@@ -69,7 +69,7 @@ app.post("/generatepost", async (req, res) => {
     res.status(500).json({ error: "An error occurred in gemni code" });
   }
 });
-app.post("/generatePost", async (req, res) => {
+app.post("/generatepostforreact", async (req, res) => {
   try {
     const genAI = new GoogleGenerativeAI(process.env.genai_key);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
