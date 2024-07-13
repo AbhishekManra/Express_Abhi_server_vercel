@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "./index.js",
+        "src": "./index.cjs",
         "use": "@vercel/node"
       }
     ],
@@ -10,22 +10,22 @@
       {
         "src": "/generate",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.js"
+        "dest": "/index.cjs"
       },
       {
         "src": "/generatepost",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.js"
+        "dest": "/index.cjs"
       },
       {
         "src": "/generatecomment",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.js"
+        "dest": "/index.cjs"
       },
       {
         "src": "/generatemessage",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.js"
+        "dest": "/index.cjs"
       }
     ],
     "outputDirectory": "dist"
