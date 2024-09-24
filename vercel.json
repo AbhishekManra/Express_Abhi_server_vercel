@@ -9,22 +9,22 @@
     "rewrites": [
       {
         "source": "/generate",
-        "methods": ["POST", "OPTIONS"],
+
         "destination": "/index.mjs"
       },
       {
         "source": "/generatepost",
-        "methods": ["POST", "OPTIONS"],
+       
         "destination": "/index.mjs"
       },
       {
         "source": "/generatecomment",
-        "methods": ["POST", "OPTIONS"],
+     
         "destination": "/index.mjs"
       },
       {
         "source": "/generatemessage",
-        "methods": ["POST", "OPTIONS"],
+        
         "destination": "/index.mjs"
       }
     ],
