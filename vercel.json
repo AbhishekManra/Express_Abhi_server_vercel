@@ -2,30 +2,30 @@
     "version": 2,
     "builds": [
       {
-        "src": "./index.mjs",
+        "source": "./index.mjs",
         "use": "@vercel/node"
       }
     ],
     "rewrites": [
       {
-        "src": "/generate",
+        "source": "/generate",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.mjs"
+        "destination": "/index.mjs"
       },
       {
-        "src": "/generatepost",
+        "source": "/generatepost",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.mjs"
+        "destination": "/index.mjs"
       },
       {
-        "src": "/generatecomment",
+        "source": "/generatecomment",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.mjs"
+        "destination": "/index.mjs"
       },
       {
-        "src": "/generatemessage",
+        "source": "/generatemessage",
         "methods": ["POST", "OPTIONS"],
-        "dest": "/index.mjs"
+        "destination": "/index.mjs"
       }
     ],
     "headers": [
