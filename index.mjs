@@ -63,34 +63,34 @@ app.post('/generate', async (req, res) => {
 
 app.post("/generatepost", async (req, res) => {
   try {
-    console.log("hhhh")
-    // const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
-    // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    
+    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-    // // Get the prompt from the request body
-    // const request_data  = req.body.data;
-    // console.log(request_data);
+    // Get the prompt from the request body
+    const request_data  = req.body.data;
+    console.log(request_data);
 
-    // const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Prompt : " + request_data[3].prompt + 
-    //   `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible ,  i am adding some of my information , ${request_data[2].persona} also give the response in a formatted manner and dont give headings just give content without headings\n `;
-    //   console.log(prompt)
+    const prompt = " Goals : "+  request_data[0].goals +" Tone : "+ request_data[1].tone + " Prompt : " + request_data[3].prompt + 
+      `\n\n  Above is given the Goals , tone , persona and prompt, Now create a linkedIn post from the above info and also include emojis if possible ,  i am adding some of my information , ${request_data[2].persona} also give the response in a formatted manner and dont give headings just give content without headings\n `;
+      console.log(prompt)
 
 
-    // // Check if the prompt is provided
-    // if (!prompt) {
-    //   return res.status(400).json({ error: "Prompt is required" });
-    // }
+    // Check if the prompt is provided
+    if (!prompt) {
+      return res.status(400).json({ error: "Prompt is required" });
+    }
 
-    // // const result = await model.generateContent(prompt);
-    // model.generateContent(prompt).then(data=>{
+    // const result = await model.generateContent(prompt);
+    model.generateContent(prompt).then(data=>{
 
-    //   const response = data.response;
-    //   const text = response.text();
-    //   console.log(text);
+      const response = data.response;
+      const text = response.text();
+      console.log(text);
       
-    //   // Send the response after all the operations have completed
-    //   res.json({ message: text });
-    // })
+      // Send the response after all the operations have completed
+      res.json({ message: text });
+    })
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
