@@ -1,7 +1,8 @@
 import express from "express";
-require('dotenv').config()
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import * as dotenv from 'dotenv';
+import 'dotenv/config'
+
 import cors from 'cors'
 
 
@@ -12,11 +13,11 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors())
-dotenv.config(); 
+
 
 app.post('/generate', async (req, res) => {
     try {
-        const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+        const genAI = new GoogleGenerativeAI(process.env.GENAI_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
         // const { messages } = req.body; 
         console.log(req.body.messages)
@@ -26,7 +27,7 @@ app.post('/generate', async (req, res) => {
       `\n\n Above is the conversation between me and someone on bumble(datingSite),on my behalf generate what should be my next response,nothing extra should be retured. \n `;
       console.log(prompt)
       const result = await model.generateContent(prompt); // Use your language model function
-      const response = await result.response;
+      const response = result.response;
       const text = response.text();
         
       console.log("This is the result");
@@ -40,7 +41,7 @@ app.post('/generate', async (req, res) => {
 
 app.post("/generatepost", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.GENAI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -57,13 +58,16 @@ app.post("/generatepost", async (req, res) => {
       return res.status(400).json({ error: "Prompt is required" });
     }
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-    console.log(text);
+    // const result = await model.generateContent(prompt);
+    model.generateContent(prompt).then(data=>{
 
-    // Send the response after all the operations have completed
-    res.json({ message: text });
+      const response = data.response;
+      const text = response.text();
+      console.log(text);
+      
+      // Send the response after all the operations have completed
+      res.json({ message: text });
+    })
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred in gemni code" });
@@ -71,7 +75,7 @@ app.post("/generatepost", async (req, res) => {
 });
 app.post("/generatepostforreact", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.GENAI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -103,7 +107,7 @@ app.post("/generatepostforreact", async (req, res) => {
 
 app.post("/generatecomment", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.GENAI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -135,7 +139,7 @@ app.post("/generatecomment", async (req, res) => {
 });
 app.post("/generatemessage", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI(process.env.GENAI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -173,6 +177,6 @@ app.post("/generatemessage", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-    console.log(`Starting Server on Port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Starting Server on Port ${process.env.PORT}`);
   });
