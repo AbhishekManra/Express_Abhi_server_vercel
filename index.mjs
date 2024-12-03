@@ -131,7 +131,7 @@ app.post("/generatepostforreact", async (req, res) => {
 
 app.post("/generatecomment", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI("AIzaSyCDTeYTmuVfwbYGu-0eJbewYKYUK65WWm4");
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
@@ -163,7 +163,7 @@ app.post("/generatecomment", async (req, res) => {
 });
 app.post("/generatemessage", async (req, res) => {
   try {
-    const genAI = new GoogleGenerativeAI("AIzaSyCpNiz9zXnzI2XkL8U26xH0-VMwH9mg9ig");
+    const genAI = new GoogleGenerativeAI("AIzaSyCDTeYTmuVfwbYGu-0eJbewYKYUK65WWm4");
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
