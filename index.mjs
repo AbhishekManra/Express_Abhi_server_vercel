@@ -197,7 +197,7 @@ app.post("/generatemessage", async (req, res) => {
     res.json({ message: text });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred in gemni code" });
+    res.status(500).json({ error: error});
   }
 });
 
