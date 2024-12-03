@@ -167,7 +167,7 @@ app.post("/generatemessage", async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // Get the prompt from the request body
-    const request_data  = req.body;
+    const request_data  = req.body.data;
 
     const prompt =
       " Goals : " +
